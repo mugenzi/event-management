@@ -1,0 +1,51 @@
+
+
+GET http://localhost:4000/api HTTP/1.1
+
+#################################################
+
+POST http://localhost:4000/api/create HTTP/1.1
+Content-Type: application/json
+
+{
+   "name": "Event Title",
+   "eventDate": "String",
+   "eventType": "String",
+   "eventStatus": "String",
+   "eventVenue": {
+       "location": {
+           "lat": "123",
+           "long": "456"
+       },
+       "address": {
+         "street": "1000N 4th st",
+           "city": "Fairfield",
+           "state": "IA",
+           "zipcode":"52557"
+       }
+   }
+}
+
+
+
+############################
+
+GET http://localhost:4000/guests/test
+
+
+#################################################
+
+POST http://localhost:4000/guests/create HTTP/1.1
+Content-Type: application/json
+
+{
+   "firstName": "Event Title",
+   "lastName": "String",
+   "email": "String",
+   "phoneNumber": "String",
+   "eventId": "123" 
+}
+
+
+######################################################
+GET localhost:4000/guests/ObjectId("5e6e567491c2cd2a5014cce7") HTTP/2.0
