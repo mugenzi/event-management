@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'create-event', component: EventCreateComponent },
   { path: 'edit-event/:id', component: EventEditComponent },
   { path: 'events-list', component: EventListComponent },
-  { path: 'create-guest', component : GuestCreateComponent},
+  { path: 'create-guest/:id', component : GuestCreateComponent},
   { path: 'guests-list', component: GuestListComponent },
 ];
 

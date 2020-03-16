@@ -8,8 +8,8 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
   templateUrl: './guest-create.component.html',
   styleUrls: ['./guest-create.component.css']
 })
-export class GuestCreateComponent implements OnInit {
 
+export class GuestCreateComponent implements OnInit {
   submitted = false;
   guestForm: FormGroup;
 
@@ -27,33 +27,40 @@ export class GuestCreateComponent implements OnInit {
   mainForm() {
     this.guestForm = this.fb.group({
       firstname: ['', [Validators.required]],
-      lastname:  ['', [Validators.required]],
-      email:     ['', [Validators.required]],
-      phone:     ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
-      status:    ['', [Validators.required]]
+      lastname: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      phone: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
+      status: ['']
     })
   }
 
-    // Getter to access form control
-    get myForm(){
-      return this.guestForm.controls;
+  // Choose eventType with select dropdown
+  updateProfile(e){
+    this.guestForm.get('eventType').setValue(e, {
+      onlySelf: true
+    })
+  }
+
+  // Getter to access form control
+  get myForm(){
+    return this.guestForm.controls;
+  }
+
+  onSubmit() {
+    this.submitted = true;
+    if (!this.guestForm.valid) {
+      return false;
+    } else {
+      this.guestService.createGuest(this.guestForm.value, this.guestForm.get('_id')).subscribe(
+        (res) => {
+          console.log('Guest successfully created!')
+          this.ngZone.run(() => this.router.navigateByUrl('/guests-list'))
+        }, (error) => {
+          console.log(error);
+        });
     }
-
-    onSubmit() {
-      this.submitted = true;
-      if (!this.guestForm.valid) {
-        return false;
-      } else {
-        this.guestService.createGuest(this.guestForm.value).subscribe(
-          (res) => {
-            console.log('Guest successfully created!')
-            this.ngZone.run(() => this.router.navigateByUrl('/guests-list'))
-          }, (error) => {
-            console.log(error);
-          });
-      }
-    }
-
-
+  }
 
 }
+
+
