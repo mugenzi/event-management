@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h2>
+                        LOGIN
+                    </h2>
+                </div>
+                <div class="col-sm-9">
+                    <!-- <a routerLinkActive="active" routerLink="/events-list" class="btn btn-success">View Events</a>
+                    <a routerLinkActive="active" routerLink="/create-event" class="btn btn-success">Add Event</a> -->
+                </div>
+            </div>
+        </div>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+
+            <div class="form-group">
+                <label for="inputName">Email</label>
+                <input class="form-control" type="text" formControlName="email">
+                <!-- error -->
+                <div class="invalid-feedback" *ngIf="submitted && myForm.email.errors?.required">
+                    Email is required.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputName">Password</label>
+                <input class="form-control" type="text" formControlName="password">
+                <!-- error -->
+                <div class="invalid-feedback" *ngIf="submitted && myForm.password.errors?.required">
+                    password is required.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-success btn-lg btn-block" type="submit">LOGIN</button>
+            </div>
+        </form>
+    </div>
+</div>
