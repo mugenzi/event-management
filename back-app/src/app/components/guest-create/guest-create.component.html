@@ -1,0 +1,81 @@
+<div class="container">
+
+
+  <div class="table-wrapper">
+
+   <div class="table-title">
+     <div class="row">
+       <div class="col-sm-3">
+         <h2>
+         My Guests
+         </h2>
+       </div>
+
+
+         <div class="col-sm-9">
+           <a routerLinkActive="active" routerLink="/events-list" class="btn btn-success">View Events</a>
+           <a routerLinkActive="active" routerLink="/create-event" class="btn btn-success">Add Event</a>
+     </div>
+     </div>
+   </div>
+
+
+       <form [formGroup]="guestForm" (ngSubmit)="onSubmit()">
+
+
+
+         <div class="form-group">
+           <label for="inputFirstname">First Name</label>
+           <input class="form-control" type="text" formControlName="firstname">
+           <!-- error -->
+           <div class="invalid-feedback" *ngIf="submitted && myForm.firstname.errors?.required">
+             Name is required.
+           </div>
+         </div>
+
+         <div class="form-group">
+          <label for="inputLastname">Last Name</label>
+          <input class="form-control" type="text" formControlName="lastname">
+          <!-- error -->
+          <div class="invalid-feedback" *ngIf="submitted && myForm.lastname.errors?.required">
+            Name is required.
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label for="inputEmail">Email</label>
+          <input class="form-control" type="text" formControlName="email">
+          <!-- error -->
+          <div class="invalid-feedback" *ngIf="submitted && myForm.email.errors?.required">
+            Name is required.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputPhone">Phone Number</label>
+          <input class="form-control" type="text" formControlName="phone">
+          <!-- error -->
+          <div class="invalid-feedback" *ngIf="submitted && myForm.phone.errors?.required">
+            Name is required.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputStatus">Status</label>
+          <input class="form-control" type="text" formControlName="status">
+          <!-- error -->
+          <div class="invalid-feedback" *ngIf="submitted && myForm.status.errors?.required">
+            Name is required.
+          </div>
+        </div>
+
+
+         <div class="form-group">
+           <button class="btn btn-success btn-lg btn-block" type="submit">Save</button>
+         </div>
+       </form>
+  </div>
+
+
+ </div>

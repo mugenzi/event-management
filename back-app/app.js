@@ -8,7 +8,9 @@
 // Connecting with mongo db
 mongoose.Promise = global.Promise;
 mongoose.connect(dbConfig.db, {
-   useNewUrlParser: true
+   useNewUrlParser: true,
+   useUnifiedTopology: true,
+   useCreateIndex: true
 }).then(() => {
       console.log('Database sucessfully connected')
    },
@@ -18,8 +20,8 @@ mongoose.connect(dbConfig.db, {
 )
 
 // Setting up port with express js
-const eventRoute = require('./routes/event-routes') 
-const guest = require('./routes/guest.route'); // Imports routes for the guests
+const eventRoute = require('./routes/event.route') 
+const guestRoute = require('./routes/guest.route'); // Imports routes for the guests
  
 
 
@@ -31,9 +33,9 @@ app.use(bodyParser.urlencoded({
 app.use(cors()); 
 app.use(express.static(path.join(__dirname, 'dist/back-app')));
 app.use('/', express.static(path.join(__dirname, 'dist/back-app')));
-app.use('/api', eventRoute);
+app.use('/events', eventRoute);
 
-app.use('/guests', guest);
+app.use('/guests', guestRoute);
 
 // Create port
 const port = process.env.PORT || 4000;

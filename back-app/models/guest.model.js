@@ -4,13 +4,13 @@ const Schema = mongoose.Schema;
 // Define collection and schema
 
 let Guest = new Schema({
-   firstName: String,
-   lastName: String,
+   firstname: String,
+   lastname: String,
    email: String,
-   phoneNumber: String,
-   eventId: String 
+   phone: String,
+   status: String
 }, {
-   collection: 'guests'
+   collection: 'events'
 })
 
 module.exports = mongoose.model('Guest', Guest)
