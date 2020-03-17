@@ -43,8 +43,8 @@
           <span class="edit" [routerLink]="['/edit-event/', event._id]">
             <button type="button" class="btn btn-success btn-sm">Edit</button>
           </span>
-          <span class="delete" (click)="removeEvent(event, i)">
-            <button type="button" class="btn btn-danger btn-sm">Delete</button>
+          <span class="add" >
+            <a routerLinkActive="active" routerLink="/create-guest/{{event._id}}" class="btn btn-danger btn-sm text-white">Add Guest</a>
           </span>
         </td>
       </tr>
