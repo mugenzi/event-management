@@ -28,8 +28,9 @@
         <th scope="col">Name</th>
         <th scope="col">eventDate</th>
         <th scope="col">eventType</th>
-        <th scope="col">Phone No</th>
-        <th scope="col center" width="195">Update</th>
+        <th scope="col">Guests</th>
+        <th scope="col">Update</th>
+        <th scope="col">New Guest</th>
       </tr>
     </thead>
     <tbody>
@@ -38,15 +39,16 @@
         <td>{{event.name}}</td>
         <td>{{event.eventDate}}</td>
         <td>{{event.eventType}}</td>
-        <td>{{event.eventStatus}}</td>
+        <td>{{event.guests.length}}</td>
         <td class="text-center edit-block">
-          <span class="edit" [routerLink]="['/edit-event/', event._id]">
+          <span class="edit" routerLink="/edit-update/{{event._id}}">
             <button type="button" class="btn btn-success btn-sm">Edit</button>
           </span>
-          <span class="delete" (click)="removeEvent(event, i)">
-            <button type="button" class="btn btn-danger btn-sm">Delete</button>
-          </span>
         </td>
+        <td class="text-center edit-block">
+          <span class="add" >
+          <a routerLinkActive="active" routerLink="/create-guest/{{event._id}}" class="btn btn-danger btn-sm text-white">Add Guest</a>
+        </span></td>
       </tr>
     </tbody>
   </table>

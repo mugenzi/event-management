@@ -24,6 +24,7 @@
               "src/assets"
             ],
             "styles": [
+
               "src/styles.css"
             ],
             "scripts": []
@@ -119,10 +120,6 @@
           }
         }
       }
-    }
-  },
-  "defaultProject": "front-app",
-  "cli": {
-    "analytics": false
-  }
+    }},
+  "defaultProject": "front-app"
 }

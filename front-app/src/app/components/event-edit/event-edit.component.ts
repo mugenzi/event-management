@@ -1,4 +1,4 @@
-import { Event } from '../../models/Event';
+import { Event } from '../../models/event.model';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { EventService } from '../../services/event.service';
@@ -15,8 +15,7 @@ export class EventEditComponent implements OnInit {
   submitted = false;
   editForm: FormGroup;
   eventData: Event[];
-  EventProfile: any = ['Finance', 'BDM', 'HR', 'Sales', 'Admin']
-
+  EventProfile:any = ['Wedding', 'Conference']
   constructor(
     public fb: FormBuilder,
     private actRoute: ActivatedRoute,
@@ -30,9 +29,15 @@ export class EventEditComponent implements OnInit {
     this.getEvent(id);
     this.editForm = this.fb.group({
       name: ['', [Validators.required]],
-      eventDate: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
+      eventDate: ['', [Validators.required]],
       eventType: ['', [Validators.required]],
-      phoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]+$')]]
+      eventStatus: ['', [Validators.required,]],
+      lat: ['', [Validators.required]],
+      long: ['', [Validators.required]],
+      street: ['', [Validators.required]],
+      city: ['', [Validators.required]],
+      state: ['', [Validators.required]],
+      zipcode: ['', [Validators.required]]
     })
   }
 
@@ -54,7 +59,7 @@ export class EventEditComponent implements OnInit {
         name: data['name'],
         eventDate: data['eventDate'],
         eventType: data['eventType'],
-        phoneNumber: data['phoneNumber'],
+        eventStatus: data['eventStatus'],
       });
     });
   }
@@ -62,9 +67,9 @@ export class EventEditComponent implements OnInit {
   updateEvent() {
     this.editForm = this.fb.group({
       name: ['', [Validators.required]],
-      eventDate: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
+      eventDate: ['', [Validators.required]],
       eventType: ['', [Validators.required]],
-      phoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]+$')]]
+      eventStatus: ['', [Validators.required,]]
     })
   }
 

@@ -30,7 +30,7 @@ export class EventCreateComponent implements OnInit {
       name: ['', [Validators.required]],
       eventDate: ['', [Validators.required]],
       eventType: ['', [Validators.required]],
-      phoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
+      eventStatus: ['', [Validators.required,]],
       lat: ['', [Validators.required]],
       long: ['', [Validators.required]],
       street: ['', [Validators.required]],

@@ -9,12 +9,12 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 
 export class EventService {
 
-  baseUri:string = 'http://localhost:4000/api';
+  baseUri:string = 'http://localhost:4000/events';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient) { }
 
-  // Create
+  // CREATE EVENT
   createEvent(data): Observable<any> {
     let url = `${this.baseUri}/create`;
     return this.http.post(url, data)
@@ -39,7 +39,7 @@ export class EventService {
     )
   }
 
-  // Update event
+  // UPDATE EVENT
   updateEvent(id, data): Observable<any> {
     let url = `${this.baseUri}/update/${id}`;
     return this.http.put(url, data, { headers: this.headers }).pipe(
