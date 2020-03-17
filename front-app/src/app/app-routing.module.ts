@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: 'events-list', component: EventListComponent },
   { path: 'create-guest/:id', component : GuestCreateComponent},
   { path: 'guests-list', component: GuestListComponent },
+  { path: 'edit-update/:id', component: EventEditComponent },
 ];
 
 @NgModule({

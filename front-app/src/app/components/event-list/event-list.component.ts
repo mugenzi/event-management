@@ -20,6 +20,7 @@ export class EventListComponent implements OnInit {
   readEvent(){
     this.eventService.getEvents().subscribe((data) => {
      this.Event = data;
+     console.log(data)
     })
   }
 

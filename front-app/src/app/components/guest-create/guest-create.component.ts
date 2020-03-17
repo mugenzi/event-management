@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { GuestService } from '../../services/guest.service';
 import { Component, OnInit, NgZone } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
@@ -12,17 +12,23 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 export class GuestCreateComponent implements OnInit {
   submitted = false;
   guestForm: FormGroup;
+  public id: string;
 
   constructor(
     public fb: FormBuilder,
     private router: Router,
     private ngZone: NgZone,
-    private guestService: GuestService
+    private guestService: GuestService,
+    private route : ActivatedRoute,
   ) {
     this.mainForm();
-  }
 
-  ngOnInit() { }
+  }
+ ;
+
+  ngOnInit() {
+    this.id = this.route.snapshot.paramMap.get('id');
+   }
 
   mainForm() {
     this.guestForm = this.fb.group({
@@ -34,12 +40,6 @@ export class GuestCreateComponent implements OnInit {
     })
   }
 
-  // Choose eventType with select dropdown
-  updateProfile(e){
-    this.guestForm.get('eventType').setValue(e, {
-      onlySelf: true
-    })
-  }
 
   // Getter to access form control
   get myForm(){
@@ -47,16 +47,18 @@ export class GuestCreateComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log( this.id);
     this.submitted = true;
     if (!this.guestForm.valid) {
       return false;
     } else {
-      this.guestService.createGuest(this.guestForm.value, this.guestForm.get('_id')).subscribe(
+      this.guestService.createGuest(this.guestForm.value, this.id).subscribe(
         (res) => {
           console.log('Guest successfully created!')
-          this.ngZone.run(() => this.router.navigateByUrl('/guests-list'))
+          this.ngZone.run(() => this.router.navigateByUrl('/events-list'))
         }, (error) => {
           console.log(error);
+
         });
     }
   }

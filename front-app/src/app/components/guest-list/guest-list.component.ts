@@ -22,6 +22,7 @@ export class GuestListComponent implements OnInit {
   readGuest(){
     this.guestService.getGuests().subscribe((data) => {
      this.Guest = data;
+    
     })
   }
 

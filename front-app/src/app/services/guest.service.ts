@@ -14,21 +14,21 @@ export class GuestService {
 
   constructor(private http: HttpClient) { }
 
-  // Create
+  // CREATE A GUEST
   createGuest(data, id): Observable<any> {
     let url = `${this.baseUri}/create/${id}`;
-    return this.http.post(url, data)
+    return this.http.post(url, data,  {responseType: 'text'})
       .pipe(
         catchError(this.errorMgmt)
       )
   }
 
-  // Get all events
+  // GET ALL GUESTS
   getGuests() {
     return this.http.get(`${this.baseUri}`);
   }
 
-  // Get event
+  // Get GUEST
   getGuest(id): Observable<any> {
     let url = `${this.baseUri}/read/${id}`;
     return this.http.get(url, {headers: this.headers}).pipe(
