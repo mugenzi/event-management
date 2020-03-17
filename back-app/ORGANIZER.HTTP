@@ -15,6 +15,12 @@ GET http://localhost:4000/event/organizers
 #################################################
 GET http://localhost:4000/event/organizers/habibu@gmail.com
 
+
+{
+    "email": "mugenzi1@gmail.com",
+    "password": "123"
+}
+
 ###
 POST http://localhost:4000/event/authentication/login HTTP/1.1
 //content-type: application/json 

@@ -10,6 +10,7 @@ exports.findAll = async(req, res) => {
 }
 
 exports.findByEmail = async(req, res, next) => {
+    console.log('#########SNdakubona')
     const organizer = await Organizer.findOne({ email: req.params.email });
     organizer ? res.send(organizer) : res.status(404).send({ message: "User not found." });
 }
@@ -25,7 +26,7 @@ exports.findById = async(req, res, next) => {
 exports.update = async(req, res, next) => {
     const user = await Organizer.findOneAndUpdate({ "email": req.params.email }, { $set: req.body }, { useFindAndModify: false }, function(err, guest) {
         if (err) return next(err);
-        const accessToken = jwt.sign(userObject, accessTokenSecret, {
+        const accessToken = jwt.sign(req.body, accessTokenSecret, {
             expiresIn: 86400 // expires in 24 hours
         });
         res.status(201).send({ message: "Organizer Updated successfully.", accessToken });

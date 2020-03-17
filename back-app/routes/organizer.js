@@ -15,7 +15,7 @@ router.get('/', authenticateJWT, Controller.findAll);
 
 router.get('/id/:id', authenticateJWT, Controller.findById);
 
-router.get('/:email', authenticateJWT, Controller.findByEmail);
+router.get('/email/:email', authenticateJWT, Controller.findByEmail);
 
 router.post('/', json(), Controller.create);
 

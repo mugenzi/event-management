@@ -27,7 +27,7 @@ router.post('/login', json(), async function(req, res) {
     console.log('#######you are calling login service');
     await User.findOne({ email: req.body.email }, function(err, user) {
         if (err) return res.status(500).send('Server side error.');
-        if (!user) return res.status(404).send('Organizer not found.');
+        if (!user) return res.status(406).send('Organizer not found.');
 
         var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
         if (!passwordIsValid) return res.status(401).send({ auth: false, token: null });

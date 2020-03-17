@@ -7,9 +7,9 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
   providedIn: 'root'
 })
 export class RegisterService {
-  
-  baseUri:string = 'http://localhost:4000/event/organizers';
-  //baseUri:string = 'http://localhost:4000/event/login';
+
+  baseUri: string = 'http://localhost:4000/event/organizers';
+  //http://localhost:4000/event/organizers/email/habibu@gmail.com
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient) { }
@@ -17,30 +17,10 @@ export class RegisterService {
   // Create One
   register(data): Observable<any> {
     let url = `${this.baseUri}`;
-    return this.http.post(url, data)
+    return this.http.get(url, data)
       .pipe(
         catchError(this.errorMgmt)
       )
-  }
-
-  // login(data): Observable<any> {
-  //   let url = `${this.baseUri}`;
-  //   return this.http.post(url, data)
-  //     .pipe(
-  //       catchError(this.errorMgmt)
-  //     )
-  // }
-
-  login(data): Observable<boolean> {
-    let url = `${this.baseUri}/login`;
-    const options = { headers: new HttpHeaders().set('Content-Type', 'application/json') };
-    return this.http.post<{token: string}>(url, data, options)
-      .pipe(
-        map(result => {
-          localStorage.setItem('access_token', result.token);
-          return true;
-        })
-      );
   }
 
   // Get all organizer
@@ -50,7 +30,19 @@ export class RegisterService {
 
   // Get logged user
   getLoggedUser(email) {
-    return this.http.get(`${this.baseUri}/${email}`);
+    let user = null;
+    //localStorage.setItem('logged_user', email);
+    //headers: req.headers.set('Authorization', `Bearer ${token}`)
+    //let options = { headers: new HttpHeaders().set('Content-Type', 'application/json') };
+    let token = localStorage.getItem('access_token')
+    let headers = new HttpHeaders().set('x-access-token',  `Bearer ${token}`);
+
+    this.http.get(`${this.baseUri}/email/${email}`, {headers}).subscribe((result) => {
+      console.log(result)
+      // localStorage.setItem('logged_user', result.toString());
+      // user = result;
+    });
+    return user;
   }
 
   // Delete Guest

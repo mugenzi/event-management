@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { RegisterService } from './register.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,40 +10,15 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 export class AuthenticationService {
 
   baseUri:string = 'http://localhost:4000/event/authentication';
-  //baseUri:string = 'http://localhost:4000/event/logout';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
-  constructor(private http: HttpClient) { }
-  // http://localhost:4000/event/login
-  
-
-  // login(data): Observable<any> {
-  //   let url = `${this.baseUri}`;
-  //   console.log('#################\n');
-  //   console.log(`${data.email}\n`);
-  //   console.log(`${data.password}\n`);
-  //   console.log(`${this.baseUri}\n`);
-
-  //   console.log(url)
-  //   return this.http.post(url, data)
-  //     .pipe(
-  //       catchError(this.errorMgmt)
-  //     )
-  // }
-
-  // logout(data): Observable<any> {
-  //   let url = `${this.baseUri}`;
-  //   return this.http.get(url, data)
-  //     .pipe(
-  //       catchError(this.errorMgmt)
-  //     )
-  // }
-
-
-
+  options = { headers: new HttpHeaders().set('Content-Type', 'application/json') };
+  constructor(private http : HttpClient, private registerService : RegisterService) { }
 
   login(data): Observable<boolean> {
     let url = `${this.baseUri}/login`;
-    return this.http.post<{token: string}>(url, data)
+    let options = { headers: new HttpHeaders().set('Content-Type', 'application/json') };
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.post<{token: string}>(url, data, {headers})
       .pipe(
         map(result => {
           localStorage.setItem('access_token', result.token);
