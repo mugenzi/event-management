@@ -1,0 +1,26 @@
+POST http://localhost:4000/event/organizers HTTP/1.1
+
+Content-Type: application/json
+{
+ 	"firstname": "Jean Claude",
+ 	"lastname":"Mugenzi",
+    "email": "jean123@gmail.com",
+    "password": "123"
+}
+
+#################################################
+
+GET http://localhost:4000/event/organizers
+
+#################################################
+GET http://localhost:4000/event/organizers/habibu@gmail.com
+
+###
+POST http://localhost:4000/event/authentication/login HTTP/1.1
+//content-type: application/json 
+
+{
+    "email": "mugenzi1@gmail.com",
+    "password": "123"
+}
+

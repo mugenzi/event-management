@@ -13,6 +13,16 @@ import { EventEditComponent } from './components/event-edit/event-edit.component
 import { EventService } from './services/event.service';
 import { GuestCreateComponent } from './components/guest-create/guest-create.component';
 import { GuestListComponent } from './components/guest-list/guest-list.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+
+import { AuthenticationService } from './services/authentication.service';
+import { AuthenticationGuard } from './guards/authentication.guard';
+
+import { JwtModule } from '@auth0/angular-jwt';
+export function tokenGetter() {
+  return localStorage.getItem('access_token');
+}
 
 @NgModule({
   declarations: [
@@ -21,7 +31,9 @@ import { GuestListComponent } from './components/guest-list/guest-list.component
     EventListComponent,
     EventEditComponent,
     GuestCreateComponent,
-    GuestListComponent
+    GuestListComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -29,11 +41,16 @@ import { GuestListComponent } from './components/guest-list/guest-list.component
     HttpClientModule,
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ['localhost:4000'],
+        blacklistedRoutes: ['localhost:4000/api/auth']
+      }
+    })
   ],
-
-
-  providers: [EventService],
+  providers: [EventService, AuthenticationService, AuthenticationGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
