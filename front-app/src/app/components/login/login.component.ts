@@ -46,8 +46,7 @@ export class LoginComponent implements OnInit {
       this.authenticationService.login(this.loginForm.value).subscribe(
         (res) => {
           console.log('Login Successful!')
-          //this.ngZone.run(() => this.router.navigateByUrl('/guests-list'))
-          this.router.navigate(['/events-list']); 
+          this.router.navigate(['/events-list']);
         }, (error) => {
           console.log(error);
         });

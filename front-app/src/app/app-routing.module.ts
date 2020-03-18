@@ -9,9 +9,10 @@ import { GuestListComponent } from './components/guest-list/guest-list.component
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthenticationGuard } from './guards/authentication.guard';
+import { AppFrontComponent } from './components/app-front/app-front.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'create-event' },
+  { path: '', pathMatch: 'full', redirectTo: 'app-app-front' },
   { path: 'create-event', component: EventCreateComponent, canActivate: [AuthenticationGuard] },
   { path: 'edit-event/:id', component: EventEditComponent, canActivate: [AuthenticationGuard] },
   { path: 'events-list', component: EventListComponent, canActivate: [AuthenticationGuard] },
@@ -19,7 +20,9 @@ const routes: Routes = [
   { path: 'guests-list', component: GuestListComponent, canActivate: [AuthenticationGuard] },
   { path: 'edit-update/:id', component: EventEditComponent, canActivate: [AuthenticationGuard] },
   { path: 'organizer-register', component: RegisterComponent},
-  { path: 'login', component: LoginComponent}
+  { path: 'login', component: LoginComponent},
+  { path: '', component:AppFrontComponent}
+
 ];
 
 @NgModule({

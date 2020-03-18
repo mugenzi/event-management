@@ -3,7 +3,26 @@ const Event = require('../models/event.model');
 
 //CREATE EVENT
 exports.event_create = function (req, res) {
-    Event.create(req.body, (error, data) => {
+  let eventObject = {
+    "name": req.body.name,
+    "eventDate": req.body.eventDate,
+    "eventType": req.body.eventType,
+    "eventStatus": req.body.eventStatus,
+    "eventVenue": {
+        "location": {
+            "lat": req.body.lat,
+            "long": req.body.long
+        },
+        "address": {
+          "street": req.body.street,
+            "city": req.body.city,
+            "state": req.body.state,
+            "zipcode":req.body.zipcode
+        }
+    }
+ }
+    Event.create(eventObject, (error, data) => {
+
         if (error) {
           return next(error)
         } else {
@@ -28,9 +47,9 @@ exports.event_all = function(req, res){
 exports.event_update = function (req, res) {
   console.log("test")
     Event.findByIdAndUpdate(req.params.id, {$set: req.body}, function (err, event) {
-      
+
         if (err) {
-          
+
           return next(err);
         }
         res.send('Event udpated.');
@@ -39,7 +58,7 @@ exports.event_update = function (req, res) {
 
 
 
-  
+
 
 // exports.test = function (req, res) {
 //     res.send('Greetings from the Test controller!');
@@ -53,7 +72,7 @@ exports.event_update = function (req, res) {
 // };
 
 
- 
+
 // // exports.guest_all = function (req, res) {
 // //     Guest.find((error, data) => {
 // //         if (error) {
@@ -88,4 +107,3 @@ exports.event_update = function (req, res) {
 // //     })
 // // };
 
- 

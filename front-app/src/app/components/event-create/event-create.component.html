@@ -7,7 +7,7 @@
      <div class="row">
        <div class="col-sm-3">
          <h2>
-         My Events
+         CREATE EVENT
          </h2>
        </div>
 
@@ -22,7 +22,7 @@
 
        <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
          <div class="form-group">
-           <label for="inputName">Name</label>
+           <label for="inputName">Event Title</label>
            <input class="form-control" type="text" formControlName="name">
            <!-- error -->
            <div class="invalid-feedback" *ngIf="submitted && myForm.name.errors?.required">
@@ -30,9 +30,10 @@
            </div>
          </div>
 
-         <div class="form-group">
-           <label for="inputeventDate3">eventDate</label>
-           <input class="form-control" type="text" formControlName="eventDate">
+         <div class="form-group row">
+           <div class="col-sm-6">
+           <label for="inputeventDate3">Event Date</label>
+           <input class="form-control" type="date" formControlName="eventDate">
            <!-- error -->
            <div class="invalid-feedback" *ngIf="submitted && myForm.eventDate.errors?.required">
              Enter your eventDate.
@@ -42,8 +43,8 @@
            </div>
          </div>
 
-         <div class="form-group">
-           <label for="inputPassword3">eventType</label>
+         <div class="col-sm-6">
+           <label for="inputPassword3">Event Type</label>
            <select class="custom-select form-control" (change)="updateProfile($event.target.value)"
              formControlName="eventType">
              <option value="">Choose...</option>
@@ -56,18 +57,11 @@
            </div>
          </div>
 
-         <div class="form-group">
-           <label for="inputVerify3">Event Status</label>
-           <input class="form-control" type="text" formControlName="eventStatus">
-           <!-- error -->
-           <div class="invalid-feedback" *ngIf="submitted && myForm.eventStatus.errors?.required">
-             Enter your phone number.
-           </div>
-
          </div>
 
-         <div class="form-group">
-           <label for="inputLat">Lat</label>
+         <div class="form-group row">
+           <div class="col-sm-6">
+           <label for="inputLat">Latitude</label>
            <input class="form-control" type="text" formControlName="lat">
            <!-- error -->
            <div class="invalid-feedback" *ngIf="submitted && myForm.lat.errors?.required">
@@ -76,16 +70,18 @@
          </div>
 
 
-         <div class="form-group">
-           <label for="inputLong">Long</label>
+         <div class="col-sm-6">
+           <label for="inputLong">Longitude</label>
            <input class="form-control" type="text" formControlName="long">
            <!-- error -->
            <div class="invalid-feedback" *ngIf="submitted && myForm.long.errors?.required">
              Lat is required.
            </div>
          </div>
+        </div>
 
-         <div class="form-group">
+         <div class="form-group row">
+           <div class="col-sm-3">
            <label for="inputStreet">Street</label>
            <input class="form-control" type="text" formControlName="street">
            <!-- error -->
@@ -94,7 +90,7 @@
            </div>
          </div>
 
-         <div class="form-group">
+         <div class="col-sm-3">
            <label for="inputCity">City</label>
            <input class="form-control" type="text" formControlName="city">
            <!-- error -->
@@ -104,7 +100,7 @@
          </div>
 
 
-         <div class="form-group">
+         <div class="col-sm-3">
            <label for="inputState">State</label>
            <input class="form-control" type="text" formControlName="state">
            <!-- error -->
@@ -113,7 +109,7 @@
            </div>
          </div>
 
-         <div class="form-group">
+         <div class="col-sm-3">
            <label for="inputZipcode">Zipcode</label>
            <input class="form-control" type="text" formControlName="zipcode">
            <!-- error -->
@@ -121,7 +117,7 @@
              Lat is required.
            </div>
          </div>
-
+        </div>
          <div class="form-group">
            <button class="btn btn-success btn-lg btn-block" type="submit">Register</button>
          </div>

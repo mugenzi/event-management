@@ -20,6 +20,7 @@ import { AuthenticationService } from './services/authentication.service';
 import { AuthenticationGuard } from './guards/authentication.guard';
 
 import { JwtModule } from '@auth0/angular-jwt';
+import { AppFrontComponent } from './components/app-front/app-front.component';
 export function tokenGetter() {
   return localStorage.getItem('access_token');
 }
@@ -33,7 +34,8 @@ export function tokenGetter() {
     GuestCreateComponent,
     GuestListComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AppFrontComponent
   ],
   imports: [
     BrowserModule,
