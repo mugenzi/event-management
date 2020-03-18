@@ -39,14 +39,6 @@ export class EventService {
     )
   }
 
-  // UPDATE EVENT
-  updateEvent(id, data): Observable<any> {
-    let url = `${this.baseUri}/update/${id}`;
-    return this.http.put(url, data, { headers: this.headers }).pipe(
-      catchError(this.errorMgmt)
-    )
-  }
-
 
   // Error handling
   errorMgmt(error: HttpErrorResponse) {

@@ -8,7 +8,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EventCreateComponent } from './components/event-create/event-create.component';
 import { EventListComponent } from './components/event-list/event-list.component';
-import { EventEditComponent } from './components/event-edit/event-edit.component';
 
 import { EventService } from './services/event.service';
 import { GuestCreateComponent } from './components/guest-create/guest-create.component';
@@ -20,7 +19,6 @@ import { GuestFrontComponent } from './components/guest-front/guest-front.compon
     AppComponent,
     EventCreateComponent,
     EventListComponent,
-    EventEditComponent,
     GuestCreateComponent,
     GuestListComponent,
     GuestFrontComponent
