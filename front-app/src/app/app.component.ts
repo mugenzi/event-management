@@ -1,7 +1,7 @@
 import { Component,OnInit, OnChanges  } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from './services/authentication.service';
-import { HttpHeaders, HttpClient } from '@angular/common/http'; 
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -23,9 +23,9 @@ export class AppComponent  implements OnInit, OnChanges {
       }
     }
 
-  constructor(private authentication: AuthenticationService, 
-    private router: Router, 
-    private http: HttpClient) 
+  constructor(private authentication: AuthenticationService,
+    private router: Router,
+    private http: HttpClient)
     { }
 
   isLoggedIn(){return this.authentication.loggedIn;};
@@ -37,7 +37,7 @@ export class AppComponent  implements OnInit, OnChanges {
   logout() {
     this.authentication.logout();
     this.displayLoggerName();
-    this.router.navigate(['login']);
+    this.router.navigate(['']);
   }
 
 }

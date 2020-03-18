@@ -1,13 +1,13 @@
-<div class="container">
+<div class="container" id="m-top">
 
 
-  <div class="table-wrapper">
+  <div class="m-wrapper">
 
-   <div class="table-title">
+   <div class="m-title">
      <div class="row">
        <div class="col-sm-3">
          <h2>
-         My Guests
+         Create Guest
          </h2>
        </div>
 
@@ -20,7 +20,7 @@
    </div>
 
 
-       <form [formGroup]="guestForm" (ngSubmit)="onSubmit()">
+       <form [formGroup]="guestForm" (ngSubmit)="onSubmit()" class="mForm xForm">
 
 
 
@@ -65,7 +65,7 @@
 
 
          <div class="form-group">
-           <button class="btn btn-success btn-lg btn-block" type="submit">Save</button>
+           <button class="btn btn-success btn-lg btn-block" type="submit">Create Guest</button>
          </div>
        </form>
   </div>
