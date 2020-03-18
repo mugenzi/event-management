@@ -8,14 +8,7 @@ import { GuestCreateComponent } from './components/guest-create/guest-create.com
 import { GuestListComponent } from './components/guest-list/guest-list.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
-
-// import { LoginComponent } from './login/login.component';
 import { AuthenticationGuard } from './guards/authentication.guard';
-
-// const routes: Routes = [
-//   { path: 'todos', component: TodoListComponent, canActivate: [AuthGuard] },
-//   { path: 'users', component: UserListComponent, canActivate: [AuthGuard] },
-//   { path: 'login', component: LoginComponent},
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'create-event' },
@@ -34,7 +27,6 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-
 
 
 
