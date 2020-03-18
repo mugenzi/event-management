@@ -1,43 +1,36 @@
+<div class="container">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-color static-top">
+        <div class="container">
+            <p class="logo">Event Management System</p>
 
- <div class="container">
-  <!-- Navigation -->
- <nav class="navbar navbar-expand-lg navbar-dark bg-color static-top">
-   <div class="container">
-    <p class="logo">Event Management System</p>
-
-     <div class="collapse navbar-collapse" id="navbarResponsive">
-       <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-          <a routerLinkActive="active" routerLink="/events-list" class="nav-link">View Events</a>
-
-         </li>
-         <li class="nav-item">
-          <a routerLinkActive="active" routerLink="/create-event" class="nav-link">Add Event</a>
-         </li>
-         <li class="nav-item">
-          <a routerLinkActive="active" routerLink="/create-guest" class="nav-link">Add Guest</a>
-         </li>
-
-         <li class="nav-item">
-          <a routerLinkActive="active" routerLink="/guests-list" class="nav-link">View Guests</a>
-         </li>
-       </ul>
-     </div>
-
-     <p class="text-white txt-p">
-
-          Admin
-
-          </p>
-
-
-         <a  class="btn btn-light btn-sm">Logout</a>
-
-   </div>
- </nav>
- </div>
- <nav>
-
-</nav>
-
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a routerLinkActive="active" routerLink="/events-list" class="nav-link">View Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a routerLinkActive="active" routerLink="/create-event" class="nav-link">Add Event</a>
+                    </li>
+                    <li class="nav-item">
+                        <a routerLinkActive="active" routerLink="/create-guest" class="nav-link">Add Guest</a>
+                    </li>
+                    <li class="nav-item">
+                        <a routerLinkActive="active" routerLink="/guests-list" class="nav-link">View Guests</a>
+                    </li>
+                    <li class="nav-item">
+                        <a routerLinkActive="active" routerLink="/organizer-register" class="nav-link">Register</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <p class="text-white txt-p">
+            Anonymous WELCOME Fab
+        </p>
+        <div style="margin-right: 10px">
+            <a routerLinkActive="active" routerLink="/login" class="btn btn-light btn-sm">Login</a>
+        </div>
+        <button (click)="logout()" class="btn btn-light btn-sm">Logout</button>
+    </nav>
+</div>
 <router-outlet></router-outlet>

@@ -1,28 +1,60 @@
 
 const Guest = require('../models/guest.model');
+const Event = require('../models/event.model');
+var mongoose = require('mongoose'); 
 
 exports.test = function (req, res) {
     res.send('Greetings from the Test controller!');
 };
 
 exports.guest_create = function (req, res) {
-    let guest = new Guest(
+    let eventID = req.params.id;
+    var id = new mongoose.Types.ObjectId(eventID);
+let event = Event.findOne({_id:id},(error, data) => {
+    if (error) {
+        console.log(error)
+      return next(error)
+    }  
+  })
+
+let guest = new Guest(
         {
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
+            firstname: req.body.firstname,
+            lastname: req.body.lastname,
             email: req.body.email,
-            phoneNumber: req.body.phoneNumber,
-            eventId: req.body.eventId,
+            phone: req.body.phone,
+            status: req.body.status,
         }
     );
 
-    guest.save(function (err) {
+    Event.updateOne( event, { $push: {guests: guest }}, function (err) {
         if (err) {
             return next(err);
         }
         res.send('Guest Created successfully')
     })
 };
+
+
+// let count = Event.aggregate(
+//     {
+//          $group: {
+//              _id: eventID,
+//              total: { $sum: { $size:"$guests" } }
+//          }
+//     }
+//  )
+
+exports.guest_all = function (req, res) {
+    Guest.find((error, data) => {
+        if (error) {
+          return next(error)
+        } else {
+          res.json(data)
+        }
+      })
+};
+
 
 
 exports.guest_details = function (req, res) {

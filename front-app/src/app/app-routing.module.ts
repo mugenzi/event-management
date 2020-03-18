@@ -6,7 +6,9 @@ import { EventListComponent } from './components/event-list/event-list.component
 import { EventEditComponent } from './components/event-edit/event-edit.component';
 import { GuestCreateComponent } from './components/guest-create/guest-create.component';
 import { GuestListComponent } from './components/guest-list/guest-list.component';
-
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
+import { AuthenticationGuard } from './guards/authentication.guard';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'create-event' },
@@ -16,6 +18,8 @@ const routes: Routes = [
   { path: 'create-guest/:id', component : GuestCreateComponent},
   { path: 'guests-list', component: GuestListComponent },
   { path: 'edit-update/:id', component: EventEditComponent },
+  { path: 'organizer-register', component: RegisterComponent, canActivate: [AuthenticationGuard]},
+  { path: 'login', component: LoginComponent}
 ];
 
 @NgModule({
@@ -23,7 +27,6 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-
 
 
 
