@@ -9,7 +9,6 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 export class RegisterService {
 
   baseUri: string = 'http://localhost:4000/event/organizers';
-  //http://localhost:4000/event/organizers/email/habibu@gmail.com
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient) { }
@@ -26,23 +25,6 @@ export class RegisterService {
   // Get all organizer
   findAllOrganizer() {
     return this.http.get(`${this.baseUri}`);
-  }
-
-  // Get logged user
-  getLoggedUser(email) {
-    let user = null;
-    //localStorage.setItem('logged_user', email);
-    //headers: req.headers.set('Authorization', `Bearer ${token}`)
-    //let options = { headers: new HttpHeaders().set('Content-Type', 'application/json') };
-    let token = localStorage.getItem('access_token')
-    let headers = new HttpHeaders().set('x-access-token',  `Bearer ${token}`);
-
-    this.http.get(`${this.baseUri}/email/${email}`, {headers}).subscribe((result) => {
-      console.log(result)
-      // localStorage.setItem('logged_user', result.toString());
-      // user = result;
-    });
-    return user;
   }
 
   // Delete Guest

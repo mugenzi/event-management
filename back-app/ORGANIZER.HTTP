@@ -29,4 +29,8 @@ POST http://localhost:4000/event/authentication/login HTTP/1.1
     "email": "mugenzi1@gmail.com",
     "password": "123"
 }
+###
 
+GET http://localhost:4000/event/organizers/logged HTTP/1.1
+
+'x-access-token':  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdG5hbWUiOiJKYW52aWVyIiwibGFzdG5hbWUiOiJJc2FiYW5lIiwiZW1haWwiOiJpc2FiYW5lampAZ21haWwuY29tIiwiaWF0IjoxNTg0NDU5ODA2LCJleHAiOjE1ODQ1NDYyMDZ9.EidaZy2NSCsES-fhHR4mr7uzZVnqtQ71nnYrRHSSbQ8" 

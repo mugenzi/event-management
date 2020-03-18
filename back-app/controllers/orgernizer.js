@@ -15,6 +15,31 @@ exports.findByEmail = async(req, res, next) => {
     organizer ? res.send(organizer) : res.status(404).send({ message: "User not found." });
 }
 
+exports.findLoggedUser1 = async(req, res, next) => {
+    const token = req.headers['x-access-token'];
+    await Organizer.findById(token, { password: 0 }, // projection
+        function(err, user) {
+            if (err) return res.status(500).send("There was a problem finding the user.");
+            if (!user) return res.status(404).send("No user found.");
+            res.status(200).send(user);
+        });
+}
+
+exports.findLoggedUser = async(req, res) => {
+    var token = req.headers['x-access-token'];
+    if (!token) return res.status(401).send({ auth: false, message: 'No token provided.' });
+    jwt.verify(token, accessTokenSecret, function(err, decoded) {
+        if (err) return res.status(500).send({ auth: false, message: 'Failed to authenticate token.' });
+
+        Organizer.findById(decoded.id, function(err, user) {
+            if (err) return res.status(500).send("There was a problem finding the user.");
+            if (!user) return res.status(404).send("No user found.");
+            console.log(`${user.firstname} ${user.lastname}`);
+            res.status(200).send(user);
+        });
+    });
+}
+
 exports.findById = async(req, res, next) => {
     var mongoose = require('mongoose');
     console.log("#####Urahari");

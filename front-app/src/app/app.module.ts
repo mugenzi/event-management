@@ -46,7 +46,7 @@ export function tokenGetter() {
       config: {
         tokenGetter: tokenGetter,
         whitelistedDomains: ['localhost:4000'],
-        blacklistedRoutes: ['localhost:4000/api/auth']
+        blacklistedRoutes: ['localhost:4000']
       }
     })
   ],

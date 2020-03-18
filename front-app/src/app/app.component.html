@@ -7,16 +7,16 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a routerLinkActive="active" routerLink="/events-list" class="nav-link">View Events</a>
+                        <a *ngIf="isLoggedIn()" routerLinkActive="active" routerLink="/events-list" class="nav-link">View Events</a>
                     </li>
                     <li class="nav-item">
-                        <a routerLinkActive="active" routerLink="/create-event" class="nav-link">Add Event</a>
+                        <a *ngIf="isLoggedIn()" routerLinkActive="active" routerLink="/create-event" class="nav-link">Add Event</a>
                     </li>
                     <li class="nav-item">
-                        <a routerLinkActive="active" routerLink="/create-guest" class="nav-link">Add Guest</a>
+                        <a *ngIf="isLoggedIn()" routerLinkActive="active" routerLink="/create-guest" class="nav-link">Add Guest</a>
                     </li>
                     <li class="nav-item">
-                        <a routerLinkActive="active" routerLink="/guests-list" class="nav-link">View Guests</a>
+                        <a *ngIf="isLoggedIn()" routerLinkActive="active" routerLink="/guests-list" class="nav-link">View Guests</a>
                     </li>
                     <li class="nav-item">
                         <a routerLinkActive="active" routerLink="/organizer-register" class="nav-link">Register</a>
@@ -25,7 +25,7 @@
             </div>
         </div>
         <p class="text-white txt-p">
-            Anonymous WELCOME Fab
+            {{userDisplayName}}
         </p>
         <div style="margin-right: 10px">
             <a routerLinkActive="active" routerLink="/login" class="btn btn-light btn-sm">Login</a>

@@ -43,13 +43,11 @@ export class LoginComponent implements OnInit {
     if (!this.loginForm.valid) {
       return false;
     } else {
-      let user = this.registerService.getLoggedUser(this.loginForm.value.email);
       this.authenticationService.login(this.loginForm.value).subscribe(
         (res) => {
           console.log('Login Successful!')
           //this.ngZone.run(() => this.router.navigateByUrl('/guests-list'))
-          this.router.navigate(['/events-list']);
-          //this.registerService.getLoggedUser(this.loginForm.value.email)
+          this.router.navigate(['/events-list']); 
         }, (error) => {
           console.log(error);
         });

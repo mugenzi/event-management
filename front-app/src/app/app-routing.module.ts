@@ -8,24 +8,17 @@ import { GuestCreateComponent } from './components/guest-create/guest-create.com
 import { GuestListComponent } from './components/guest-list/guest-list.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
-
-// import { LoginComponent } from './login/login.component';
 import { AuthenticationGuard } from './guards/authentication.guard';
-
-// const routes: Routes = [
-//   { path: 'todos', component: TodoListComponent, canActivate: [AuthGuard] },
-//   { path: 'users', component: UserListComponent, canActivate: [AuthGuard] },
-//   { path: 'login', component: LoginComponent},
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'create-event' },
-  { path: 'create-event', component: EventCreateComponent },
-  { path: 'edit-event/:id', component: EventEditComponent },
-  { path: 'events-list', component: EventListComponent },
-  { path: 'create-guest/:id', component : GuestCreateComponent},
-  { path: 'guests-list', component: GuestListComponent },
-  { path: 'edit-update/:id', component: EventEditComponent },
-  { path: 'organizer-register', component: RegisterComponent, canActivate: [AuthenticationGuard]},
+  { path: 'create-event', component: EventCreateComponent, canActivate: [AuthenticationGuard] },
+  { path: 'edit-event/:id', component: EventEditComponent, canActivate: [AuthenticationGuard] },
+  { path: 'events-list', component: EventListComponent, canActivate: [AuthenticationGuard] },
+  { path: 'create-guest/:id', component : GuestCreateComponent, canActivate: [AuthenticationGuard]},
+  { path: 'guests-list', component: GuestListComponent, canActivate: [AuthenticationGuard] },
+  { path: 'edit-update/:id', component: EventEditComponent, canActivate: [AuthenticationGuard] },
+  { path: 'organizer-register', component: RegisterComponent},
   { path: 'login', component: LoginComponent}
 ];
 

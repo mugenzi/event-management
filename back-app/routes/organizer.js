@@ -15,6 +15,8 @@ router.get('/', authenticateJWT, Controller.findAll);
 
 router.get('/id/:id', authenticateJWT, Controller.findById);
 
+router.get('/logged', authenticateJWT, Controller.findLoggedUser);
+
 router.get('/email/:email', authenticateJWT, Controller.findByEmail);
 
 router.post('/', json(), Controller.create);
