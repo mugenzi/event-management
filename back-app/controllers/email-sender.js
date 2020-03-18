@@ -15,10 +15,10 @@ var mailOptions = {
     text: 'Please Confirm your availability'
 };
 
-transporter.sendMail(mailOptions, function(error, info) {
+exports.create = transporter.sendMail(mailOptions, function(error, info) {
     if (error) {
         console.log(error);
     } else {
-        console.log('Email sent: ' + info.response);
+        console.log('Email Sent Successfully: ' + info.response);
     }
 });
