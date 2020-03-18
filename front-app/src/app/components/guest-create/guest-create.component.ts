@@ -36,7 +36,7 @@ export class GuestCreateComponent implements OnInit {
       lastname: ['', [Validators.required]],
       email: ['', [Validators.required]],
       phone: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
-      status: ['']
+      status: ['Pending']
     })
   }
 

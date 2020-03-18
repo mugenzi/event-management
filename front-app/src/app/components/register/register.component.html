@@ -7,13 +7,11 @@
                         REGISTER
                     </h2>
                 </div>
-                <div class="col-sm-9">
-                    <!-- <a routerLinkActive="active" routerLink="/events-list" class="btn btn-success">View Events</a>
-                    <a routerLinkActive="active" routerLink="/create-event" class="btn btn-success">Add Event</a> -->
-                </div>
+
             </div>
         </div>
-
+        <div class="row justify-content-center">
+          <div class="col-md-7 p-3">
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
                 <label for="inputFirstname">Firstname</label>
@@ -51,17 +49,12 @@
                 </div>
             </div>
 
-            <!-- <div class="form-group">
-                <label for="inputName">Status</label>
-                <input class="form-control" type="text" formControlName="status">
-                
-                <div class="invalid-feedback" *ngIf="submitted && myForm.status.errors?.required">
-                    Status is required.
-                </div>
-            </div> -->
+
             <div class="form-group">
                 <button class="btn btn-success btn-lg btn-block" type="submit">REGISTER</button>
             </div>
         </form>
+        </div>
+        </div>
     </div>
 </div>
