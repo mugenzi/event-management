@@ -1,18 +1,7 @@
-<div class="container">
-    <div class="table-wrapper">
-        <div class="table-title">
-            <div class="row">
-                <div class="col-sm-3">
-                    <h2>
-                        REGISTER
-                    </h2>
-                </div>
-
-            </div>
-        </div>
-        <div class="row justify-content-center">
-          <div class="col-md-7 p-3">
-        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+<div class="container" id="m-top">
+           <div class="row justify-content-center">
+          <div class="col-md-7 p-3 bg-white">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="mForm">
             <div class="form-group">
                 <label for="inputFirstname">Firstname</label>
                 <input class="form-control" type="text" formControlName="firstname">
@@ -51,10 +40,10 @@
 
 
             <div class="form-group">
-                <button class="btn btn-success btn-lg btn-block" type="submit">REGISTER</button>
+                <button class="btn btn-info btn-lg btn-block" type="submit">REGISTER</button>
             </div>
         </form>
         </div>
         </div>
-    </div>
+
 </div>

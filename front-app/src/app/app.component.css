@@ -1,0 +1,49 @@
+
+.navbar {
+  height: 80px;
+  padding: 50px 0;
+}
+.logo h1 {
+  font-size: 24px;
+  margin: 0;
+  padding: 6px 0;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+}
+
+.logo h1 a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/*--------------------------------------------------------------
+# Navigation Menu
+--------------------------------------------------------------*/
+/* Desktop Navigation */
+.nav-item {
+  white-space: nowrap;
+  margin-top: -10px;
+
+}
+
+.nav-item a {
+  color: #2f4d5a;
+  padding: 20px 15px;
+  transition: 0.3s;
+  font-size: 13px;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-right: 1px solid #fff;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.nav-item a:hover, .nav-item .active > a, .nav-item li:hover > a {
+  background: rgba(255, 255, 255, 0.2);
+  text-decoration: none;
+}
+.nav-item:last-child:after a{
+  border-right: none !important;
+}

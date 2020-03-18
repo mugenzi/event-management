@@ -1,11 +1,16 @@
 <div class="container">
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-color static-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-color fixed-top">
       <div class="container">
-          <p class="logo">THE EVENT APPLICATION</p>
+
+
+      <div class="logo mr-auto">
+        <h1 class="text-light"><a routerLinkActive="active" routerLink=""><span>Event Management </span></a></h1>
+              </div>
+
 
           <div class="collapse navbar-collapse" id="navbarResponsive">
-              <ul class="navbar-nav mr-auto">
+              <ul class="navbar-nav mr-auto ml-auto">
                   <li class="nav-item">
                       <a *ngIf="isLoggedIn()" routerLinkActive="active" routerLink="/events-list" class="nav-link">View Events</a>
                   </li>
@@ -13,22 +18,36 @@
                       <a *ngIf="isLoggedIn()" routerLinkActive="active" routerLink="/create-event" class="nav-link">Add Event</a>
                   </li>
 
+                  </ul>
+
+                  <div class=" nav navbar-nav ml-auto">
+                    <p class="text-secondary mr-3">   {{userDisplayName}}     </p>
+
+                      <a *ngIf="!isLoggedIn()" routerLinkActive="active" routerLink="/organizer-register" class="btn btn-light mr-3 ">Register</a>
 
 
-              </ul>
+
+
+                     <a *ngIf="!isLoggedIn()" routerLinkActive="active" routerLink="/login" class="btn btn-light">Login</a>
+
+
+
+                     <a *ngIf="isLoggedIn()" (click)="logout()" class="btn btn-light">Logout</a>
+
+                  </div>
           </div>
 
           <p class="nav-right">
-              <a *ngIf="!isLoggedIn()" routerLinkActive="active" routerLink="/organizer-register" class="btn btn-light btn-sm">Register</a>
-
-            <span class="text-white txt-p">   {{userDisplayName}}     </span>
-
-                <a *ngIf="!isLoggedIn()" routerLinkActive="active" routerLink="/login" class="btn btn-light btn-sm">Login</a>
 
 
 
 
-            <button *ngIf="isLoggedIn()" (click)="logout()" class="btn btn-light btn-sm">Logout</button>
+
+
+
+
+
+
           </p>
       </div>
 
