@@ -1,9 +1,31 @@
 GET http://localhost:4000/location/ HTTP/1.1
 
 ### 
+
+GET http://localhost:4000/location/getNearestTest HTTP/1.1
+
+### 
 GET http://localhost:4000/location/test
 ###
 GET http://localhost:4000/findAll HTTP/1.1 
 
 ### 
- 
+POST http://localhost:GET http://localhost:4000/findAll HTTP/1.1 
+ HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Didier IGIRANEZA",
+    "eventDate": "02/02/2020",
+    "eventType": "Wedding",
+    "eventStatus": "Pending",
+    "eventVenue": {
+        "location": [ 56.910193131, -93.910193131],
+        "address": {
+            "street": "1000 N 4TH ST",
+            "city": "Fairfiled",
+            "state": "IOWA",
+            "zipcode": "444432"
+        }
+    }
+} 

@@ -4,8 +4,26 @@ const Schema = mongoose.Schema;
 // Define collection and schema
 
 let Location = new Schema({
-    lat: Number,
-    long:Number
+    name: String,
+   eventDate: String,
+   eventType: String,
+   eventStatus: String,
+   eventVenue: {
+       location: [],
+       address: {
+         street: String,
+           city: String,
+           state: String,
+           zipcode:String
+       }
+   }, 
+   guests : [{
+      firstname: String,
+      lastname: String,
+      email: String,
+      phone: String,
+      status: String
+   }]
 }, {
    collection: 'location'
 })
