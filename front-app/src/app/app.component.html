@@ -1,57 +1,64 @@
 <div class="container">
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-color fixed-top">
-      <div class="container">
-
-
+    <div class="container">
       <div class="logo mr-auto">
-        <h1 class="text-light"><a routerLinkActive="active" routerLink=""><span>Event Management </span></a></h1>
-              </div>
-
-
-          <div class="collapse navbar-collapse" id="navbarResponsive">
-              <ul class="navbar-nav mr-auto ml-auto">
-                  <li class="nav-item">
-                      <a *ngIf="isLoggedIn()" routerLinkActive="active" routerLink="/events-list" class="nav-link">View Events</a>
-                  </li>
-                  <li class="nav-item">
-                      <a *ngIf="isLoggedIn()" routerLinkActive="active" routerLink="/create-event" class="nav-link">Add Event</a>
-                  </li>
-
-                  </ul>
-
-                  <div class=" nav navbar-nav ml-auto">
-                    <p class="text-secondary mr-3">   {{userDisplayName}}     </p>
-
-                      <a *ngIf="!isLoggedIn()" routerLinkActive="active" routerLink="/organizer-register" class="btn btn-light mr-3 ">Register</a>
-
-
-
-
-                     <a *ngIf="!isLoggedIn()" routerLinkActive="active" routerLink="/login" class="btn btn-light">Login</a>
-
-
-
-                     <a *ngIf="isLoggedIn()" (click)="logout()" class="btn btn-light">Logout</a>
-
-                  </div>
-          </div>
-
-          <p class="nav-right">
-
-
-
-
-
-
-
-
-
-
-          </p>
+        <h1 class="text-light">
+          <a routerLinkActive="active" routerLink=""
+            ><span>Event Management </span></a
+          >
+        </h1>
       </div>
 
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav mr-auto ml-auto">
+          <li class="nav-item">
+            <a
+              *ngIf="isLoggedIn()"
+              routerLinkActive="active"
+              routerLink="/events-list"
+              class="nav-link"
+              >View Events</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              *ngIf="isLoggedIn()"
+              routerLinkActive="active"
+              routerLink="/create-event"
+              class="nav-link"
+              >Add Event</a
+            >
+          </li>
+        </ul>
 
+        <div class=" nav navbar-nav ml-auto">
+          <p class="text-secondary mr-3">{{ userDisplayName }}</p>
+
+          <a
+            *ngIf="!isLoggedIn()"
+            routerLinkActive="active"
+            routerLink="/organizer-register"
+            class="btn btn-light mr-3 "
+            >Register</a
+          >
+
+          <a
+            *ngIf="!isLoggedIn()"
+            routerLinkActive="active"
+            routerLink="/login"
+            class="btn btn-light"
+            >Login</a
+          >
+
+          <a *ngIf="isLoggedIn()" (click)="logout()" class="btn btn-light"
+            >Logout</a
+          >
+        </div>
+      </div>
+
+      <p class="nav-right"></p>
+    </div>
   </nav>
 </div>
 <router-outlet></router-outlet>
