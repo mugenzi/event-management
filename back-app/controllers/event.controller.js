@@ -24,9 +24,17 @@ exports.event_all = function(req, res){
     })
 };
 
+//GET EVENT DETAILS
+exports.event_details = function (req, res) {
+  Event.findById(req.params.id, function (err, guest) {
+      if (err) return next(err);
+      res.send(guest);
+  })
+};
+
+
 //UPDDATE EVENT
 exports.event_update = function (req, res) {
-  console.log("test")
     Event.findByIdAndUpdate(req.params.id, {$set: req.body}, function (err, event) {
       
         if (err) {

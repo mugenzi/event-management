@@ -30,8 +30,9 @@
            </div>
          </div>
 
-         <div class="form-group">
-           <label for="inputeventDate3">eventDate</label>
+         <div class="form-group row">
+          <div class="col-sm-6">
+           <label for="inputeventDate">eventDate</label>
            <input class="form-control" type="text" formControlName="eventDate">
            <!-- error -->
            <div class="invalid-feedback" *ngIf="submitted && myForm.eventDate.errors?.required">
@@ -42,9 +43,9 @@
            </div>
          </div>
 
-         <div class="form-group">
+         <div class="col-sm-6">
            <label for="inputPassword3">eventType</label>
-           <select class="custom-select form-control" (change)="updateProfile($event.target.value)"
+           <select class="custom-select form-control" (change)="updateEventType($event.target.value)"
              formControlName="eventType">
              <option value="">Choose...</option>
              <option *ngFor="let eventProfile of EventProfile" value="{{eventProfile}}">{{eventProfile}}
@@ -55,7 +56,7 @@
              Choose eventType.
            </div>
          </div>
-
+         </div>
          <div class="form-group">
            <label for="inputVerify3">Event Status</label>
            <input class="form-control" type="text" formControlName="eventStatus">
@@ -66,7 +67,8 @@
 
          </div>
 
-         <div class="form-group">
+         <div class="form-group row">
+          <div class="col-sm-6">
            <label for="inputLat">Lat</label>
            <input class="form-control" type="text" formControlName="lat">
            <!-- error -->
@@ -76,7 +78,7 @@
          </div>
 
 
-         <div class="form-group">
+         <div class="col-sm-6">
            <label for="inputLong">Long</label>
            <input class="form-control" type="text" formControlName="long">
            <!-- error -->
@@ -85,7 +87,9 @@
            </div>
          </div>
 
-         <div class="form-group">
+        </div>
+         <div class="form-group row">
+          <div class="col-sm-3">
            <label for="inputStreet">Street</label>
            <input class="form-control" type="text" formControlName="street">
            <!-- error -->
@@ -94,7 +98,7 @@
            </div>
          </div>
 
-         <div class="form-group">
+         <div class="col-sm-3">
            <label for="inputCity">City</label>
            <input class="form-control" type="text" formControlName="city">
            <!-- error -->
@@ -104,7 +108,7 @@
          </div>
 
 
-         <div class="form-group">
+         <div class="col-sm-3">
            <label for="inputState">State</label>
            <input class="form-control" type="text" formControlName="state">
            <!-- error -->
@@ -113,13 +117,14 @@
            </div>
          </div>
 
-         <div class="form-group">
+         <div class="col-sm-3">
            <label for="inputZipcode">Zipcode</label>
            <input class="form-control" type="text" formControlName="zipcode">
            <!-- error -->
            <div class="invalid-feedback" *ngIf="submitted && myForm.zipcode.errors?.required">
              Lat is required.
            </div>
+         </div>
          </div>
 
          <div class="form-group">

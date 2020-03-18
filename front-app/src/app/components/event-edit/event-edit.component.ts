@@ -27,22 +27,10 @@ export class EventEditComponent implements OnInit {
     this.updateEvent();
     let id = this.actRoute.snapshot.paramMap.get('id');
     this.getEvent(id);
-    this.editForm = this.fb.group({
-      name: ['', [Validators.required]],
-      eventDate: ['', [Validators.required]],
-      eventType: ['', [Validators.required]],
-      eventStatus: ['', [Validators.required,]],
-      lat: ['', [Validators.required]],
-      long: ['', [Validators.required]],
-      street: ['', [Validators.required]],
-      city: ['', [Validators.required]],
-      state: ['', [Validators.required]],
-      zipcode: ['', [Validators.required]]
-    })
-  }
+    }
 
   // Choose options with select-dropdown
-  updateProfile(e) {
+  updateEventType(e) {
     this.editForm.get('eventType').setValue(e, {
       onlySelf: true
     })
@@ -60,6 +48,12 @@ export class EventEditComponent implements OnInit {
         eventDate: data['eventDate'],
         eventType: data['eventType'],
         eventStatus: data['eventStatus'],
+        lat: data['lat'],
+        long: data['long'],
+        street: data['street'],
+        city: data['city'],
+        state: data['state'],
+        zipcode: data['zipcode'],
       });
     });
   }
@@ -69,7 +63,20 @@ export class EventEditComponent implements OnInit {
       name: ['', [Validators.required]],
       eventDate: ['', [Validators.required]],
       eventType: ['', [Validators.required]],
-      eventStatus: ['', [Validators.required,]]
+      eventStatus: ['', [Validators.required,]],
+      // eventVenue: this.fb.group({ // make a nested group
+      //   location: this.fb.group({ // make a nested group
+      //     lat: ['', [Validators.required]],
+      //     long: [Validators.required],
+      //   }),
+
+      // }),
+      lat: ['', [Validators.required]],
+      long: ['', [Validators.required]],
+      street: ['', [Validators.required]],
+      city: ['', [Validators.required]],
+      state: ['', [Validators.required]],
+      zipcode: ['', [Validators.required]]
     })
   }
 

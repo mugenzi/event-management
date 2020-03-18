@@ -24,14 +24,5 @@ export class EventListComponent implements OnInit {
     })
   }
 
-  removeEvent(event, index) {
-    if(window.confirm('Are you sure?')) {
-        this.eventService.deleteEvent(event._id).subscribe((data) => {
-          this.Event.splice(index, 1);
-        }
-      )
-    }
-  }
-
 }
 

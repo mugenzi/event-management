@@ -44,7 +44,7 @@
 
          <div class="form-group">
            <label for="inputPassword3">eventType</label>
-           <select class="custom-select form-control" (change)="updateProfile($event.target.value)"
+           <select class="custom-select form-control" (change)="updateEventType($event.target.value)"
              formControlName="eventType">
              <option value="">Choose...</option>
              <option *ngFor="let eventProfile of EventProfile" value="{{eventProfile}}">{{eventProfile}}

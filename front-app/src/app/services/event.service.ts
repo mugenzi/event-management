@@ -28,7 +28,7 @@ export class EventService {
     return this.http.get(`${this.baseUri}`);
   }
 
-  // Get event
+  // GET EVENT
   getEvent(id): Observable<any> {
     let url = `${this.baseUri}/read/${id}`;
     return this.http.get(url, {headers: this.headers}).pipe(
@@ -47,13 +47,6 @@ export class EventService {
     )
   }
 
-  // Delete event
-  deleteEvent(id): Observable<any> {
-    let url = `${this.baseUri}/delete/${id}`;
-    return this.http.delete(url, { headers: this.headers }).pipe(
-      catchError(this.errorMgmt)
-    )
-  }
 
   // Error handling
   errorMgmt(error: HttpErrorResponse) {

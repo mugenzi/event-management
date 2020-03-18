@@ -41,7 +41,7 @@ export class EventCreateComponent implements OnInit {
   }
 
   // Choose eventType with select dropdown
-  updateProfile(e){
+  updateEventType(e){
     this.eventForm.get('eventType').setValue(e, {
       onlySelf: true
     })

@@ -10,13 +10,13 @@ router.get('/', event_controller.event_all);
 
 router.put('/update/:id', event_controller.event_update);
 
-
+router.get('/read/:id', event_controller.event_details);
 
 // router.post('/create/:id', event_controller.event_create);
 
 // router.get('/:id', event_controller.event_find);
 
-// router.get('/:id', event_controller.guest_details);
+
 
 // router.put('/:id/update', guest_controller.guest_update);
 

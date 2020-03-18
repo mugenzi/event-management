@@ -68,11 +68,11 @@ Content-Type: application/json
    "eventStatus": "Event Test",
    "eventVenue": {
        "location": {
-           "lat": "123",
-           "long": "456"
+           "lat": "Event Test0",
+           "long": "Event Test0"
        },
        "address": {
-         "street": "1000N 4th st",
+         "street": "Event Test0",
            "city": "Fairfield",
            "state": "IA",
            "zipcode":"52557"
