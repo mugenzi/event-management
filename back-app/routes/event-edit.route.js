@@ -2,13 +2,10 @@ const express = require('express');
 const router = express.Router();
 
  
-const event_controller = require('../controllers/edit-event.controller');
+const event_controller = require('../controllers/event-edit.controller');
 
-router.post('/create', event_controller.event_create);
-
-router.get('/', event_controller.event_all);
-
-router.put('/update/:id', event_controller.event_update);
  
 
+router.put('/updateEvent/:id', event_controller.event_update);
+ 
 module.exports = router;
