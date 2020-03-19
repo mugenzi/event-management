@@ -9,8 +9,7 @@ const transporter = nodemailer.createTransport({
 });
 
 exports.sendEmail = (event, guest) => {
-    console.log(event + '\n');
-    console.log(guest + '\n');
+
     const firstname = guest.firstname;
     const lastname = guest.lastname;
     const email = guest.email;
@@ -20,6 +19,9 @@ exports.sendEmail = (event, guest) => {
     const eventDate = event.eventDate;
     const eventType = event.eventType;
     const venue = `${event.eventVenue.address.street}, ${event.eventVenue.address.city}, ${event.eventVenue.address.state}, ${event.eventVenue.address.zipcode}`
+
+    const eventId = event._id;
+    const guestId = guest._id;
 
     let emailFormat = `    
     <!DOCTYPE html>
@@ -105,7 +107,7 @@ exports.sendEmail = (event, guest) => {
             <p class="paragraph"></p>
         </div>
         <div style="text-align: center;">
-            <a href="http://localhost:4200/" class="button">Confirm Availability</a>
+            <a href="http://localhost:4200/eid/${eventId}/gid/${guestId}" class="button">Confirm Availability</a>
         </div>
     </div>
 </body>

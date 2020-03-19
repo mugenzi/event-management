@@ -3,7 +3,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { RegisterService } from './register.service';
-import {AppComponent} from '../app.component';
+
 @Injectable({
   providedIn: 'root'
 })
