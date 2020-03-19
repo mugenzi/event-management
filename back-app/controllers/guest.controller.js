@@ -1,7 +1,6 @@
 const Guest = require('../models/guest.model');
 const Event = require('../models/event.model');
 const EmailSender = require('../controllers/email-sender');
-const CircularJSON = require('circular-json');
 var mongoose = require('mongoose');
 
 exports.test = function(req, res) {
@@ -39,26 +38,6 @@ exports.guest_create = function(req, res) {
         });
 
 
-        //let aaaaa = Event.findOne({ _id: id }).populate('child.name').exec();
-
-        //console.log('############\n' + aaaaa.toObject());
-
-
-        // let AuthUser = function(data) {
-        //     return google.login(data.username, data.password).then(token => { return token })
-        // }
-
-        // let userToken = AuthUser('data')
-        // console.log(userToken) // Promise { <pending> }
-
-        // userToken.then(function(result) {
-        //     console.log(result) // "Some User token"
-        // })
-
-        //console.log(event);
-        // console.log(event.schema.obj.name);
-
-        //EmailSender.sendEmail(event, guest);
         res.send('Guest Created successfully');
     })
 };
@@ -94,3 +73,42 @@ exports.guest_delete = function(req, res) {
         res.send('Deleted successfully!');
     })
 };
+
+
+
+exports.guest_confirm = function (req, res) {
+  let eventID = req.params.eid;
+  var eid = new mongoose.Types.ObjectId(eventID);
+  console.log(eid);
+
+
+let event = Event.findOne({_id:eid},(error, data) => {
+  if (error) {
+      console.log(error)
+    return next(error)
+  }
+})
+
+let guestID = req.params.gid;
+var gid = new mongoose.Types.ObjectId(guestID);
+console.log(gid);
+
+let guest = Event.findOne({_id:eid, "guests._id": gid},{"guests.$": 1}, (error, data) => {
+  if (error) {
+      console.log(error)
+    return next(error)
+  }
+})
+
+console.log(guest);
+  Event.updateOne( { "_id" : eid, "guests._id": gid },
+  { "$set": { "guests.$.status": "Confirmed" }}, function (err, guest) {
+
+      if (err) return next(err);
+      res.send('Guest Status udpated.');
+  });
+};
+
+
+
+
