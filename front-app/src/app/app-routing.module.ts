@@ -10,6 +10,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthenticationGuard } from './guards/authentication.guard';
 import { AppFrontComponent } from './components/app-front/app-front.component';
+import { GuestConfirmationComponent } from './components/guest-confirmation/guest-confirmation.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'app-app-front' },
@@ -21,8 +22,9 @@ const routes: Routes = [
   { path: 'edit-update/:id', component: EventEditComponent, canActivate: [AuthenticationGuard] },
   { path: 'organizer-register', component: RegisterComponent},
   { path: 'login', component: LoginComponent},
-  { path: '', component:AppFrontComponent}
-
+  { path: '', component:AppFrontComponent},
+  { path: 'guest-confirmation', component:GuestConfirmationComponent}
+  // /event/:ei/guest/:gid
 ];
 
 @NgModule({

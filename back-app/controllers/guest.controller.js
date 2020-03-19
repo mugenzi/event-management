@@ -1,7 +1,7 @@
 
 const Guest = require('../models/guest.model');
 const Event = require('../models/event.model');
-var mongoose = require('mongoose'); 
+var mongoose = require('mongoose');
 
 exports.test = function (req, res) {
     res.send('Greetings from the Test controller!');
@@ -14,7 +14,7 @@ let event = Event.findOne({_id:id},(error, data) => {
     if (error) {
         console.log(error)
       return next(error)
-    }  
+    }
   })
 
 let guest = new Guest(
@@ -36,15 +36,6 @@ let guest = new Guest(
 };
 
 
-// let count = Event.aggregate(
-//     {
-//          $group: {
-//              _id: eventID,
-//              total: { $sum: { $size:"$guests" } }
-//          }
-//     }
-//  )
-
 exports.guest_all = function (req, res) {
     Guest.find((error, data) => {
         if (error) {
@@ -65,18 +56,39 @@ exports.guest_details = function (req, res) {
 };
 
 
-exports.guest_update = function (req, res) {
-    Guest.findByIdAndUpdate(req.params.id, {$set: req.body}, function (err, guest) {
-        if (err) return next(err);
-        res.send('Guest udpated.');
-    });
+exports.guest_confirm = function (req, res) {
+  let eventID = req.params.eid;
+  var eid = new mongoose.Types.ObjectId(eventID);
+  console.log(eid);
+
+
+let event = Event.findOne({_id:eid},(error, data) => {
+  if (error) {
+      console.log(error)
+    return next(error)
+  }
+})
+
+let guestID = req.params.gid;
+var gid = new mongoose.Types.ObjectId(guestID);
+console.log(gid);
+
+let guest = Event.findOne({_id:eid, "guests._id": gid},{"guests.$": 1}, (error, data) => {
+  if (error) {
+      console.log(error)
+    return next(error)
+  }
+})
+
+console.log(guest);
+  Event.updateOne( { "_id" : eid, "guests._id": gid },
+  { "$set": { "guests.$.status": "Confirmed" }}, function (err, guest) {
+
+      if (err) return next(err);
+      res.send('Guest Status udpated.');
+  });
 };
 
-exports.guest_delete = function (req, res) {
-    Guest.findByIdAndRemove(req.params.id, function (err) {
-        if (err) return next(err);
-        res.send('Deleted successfully!');
-    })
-};
 
- 
+
+

@@ -6,7 +6,7 @@
                 <label for="inputFirstname">Firstname</label>
                 <input class="form-control" type="text" formControlName="firstname">
                 <!-- error -->
-                <div class="invalid-feedback" *ngIf="submitted && myForm.firstname.errors?.required">
+                <div class="invalid-feedback d-block" *ngIf="submitted && myForm.firstname.errors?.required">
                     Firstname is required.
                 </div>
             </div>
@@ -15,7 +15,7 @@
                 <label for="inputLastname">Lastname</label>
                 <input class="form-control" type="text" formControlName="lastname">
                 <!-- error -->
-                <div class="invalid-feedback" *ngIf="submitted && myForm.lastname.errors?.required">
+                <div class="invalid-feedback d-block" *ngIf="submitted && myForm.lastname.errors?.required">
                     Lastname is required.
                 </div>
             </div>
@@ -23,17 +23,20 @@
             <div class="form-group">
                 <label for="inputName">Email</label>
                 <input class="form-control" type="text" formControlName="email">
-                <!-- error -->
-                <div class="invalid-feedback" *ngIf="submitted && myForm.email.errors?.required">
-                    Email is required.
-                </div>
+                  <!-- error -->
+          <div class="invalid-feedback d-block" *ngIf="submitted && myForm.email.errors?.required">
+            Enter your Email.
+          </div>
+          <div class="invalid-feedback d-block" *ngIf="submitted && myForm.email.errors?.pattern">
+            Enter valid Email.
+          </div>
             </div>
 
             <div class="form-group">
                 <label for="inputName">Password</label>
                 <input class="form-control" type="text" formControlName="password">
                 <!-- error -->
-                <div class="invalid-feedback" *ngIf="submitted && myForm.password.errors?.required">
+                <div class="invalid-feedback d-block" *ngIf="submitted && myForm.password.errors?.required">
                     password is required.
                 </div>
             </div>
