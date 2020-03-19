@@ -107,7 +107,7 @@ exports.sendEmail = (event, guest) => {
             <p class="paragraph"></p>
         </div>
         <div style="text-align: center;">
-            <a href="http://localhost:4200/eid/${eventId}/gid/${guestId}" class="button">Confirm Availability</a>
+            <a href="http://localhost:4200/guest-confirmation/eid/${eventId}/gid/${guestId}" class="button">Confirm Availability</a>
         </div>
     </div>
 </body>

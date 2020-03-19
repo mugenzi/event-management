@@ -12,7 +12,7 @@ router.post('/create/:id', guest_controller.guest_create);
 
 router.get('/', guest_controller.guest_all);
 
-router.post('/guest/:gid/event/:eid', guest_controller.guest_confirm);
+router.post('/guest/:gid/event/:eid/status/:status', guest_controller.guest_confirm);
 
 // router.put('/:id/update', guest_controller.guest_update);
 

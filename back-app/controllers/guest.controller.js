@@ -74,41 +74,35 @@ exports.guest_delete = function(req, res) {
     })
 };
 
+exports.guest_confirm = function(req, res) {
+    let eventID = req.params.eid;
+    var eid = new mongoose.Types.ObjectId(eventID);
+    console.log('##########: \n' + eid);
 
+    let event = Event.findOne({ _id: eid }, (error, data) => {
+        if (error) {
+            console.log(error)
+            return next(error)
+        }
+    })
 
-exports.guest_confirm = function (req, res) {
-  let eventID = req.params.eid;
-  var eid = new mongoose.Types.ObjectId(eventID);
-  console.log(eid);
+    let guestID = req.params.gid;
+    var gid = new mongoose.Types.ObjectId(guestID);
+    console.log('##########: \n' + gid);
 
+    let guest = Event.findOne({ _id: eid, "guests._id": gid }, { "guests.$": 1 }, (error, data) => {
+        if (error) {
+            console.log(error)
+            return next(error)
+        }
+    })
 
-let event = Event.findOne({_id:eid},(error, data) => {
-  if (error) {
-      console.log(error)
-    return next(error)
-  }
-})
+    console.log(guest);
+    let status = req.params.status;
+    Event.updateOne({ "_id": eid, "guests._id": gid }, { "$set": { "guests.$.status": status } }, function(err, guest) {
 
-let guestID = req.params.gid;
-var gid = new mongoose.Types.ObjectId(guestID);
-console.log(gid);
-
-let guest = Event.findOne({_id:eid, "guests._id": gid},{"guests.$": 1}, (error, data) => {
-  if (error) {
-      console.log(error)
-    return next(error)
-  }
-})
-
-console.log(guest);
-  Event.updateOne( { "_id" : eid, "guests._id": gid },
-  { "$set": { "guests.$.status": "Confirmed" }}, function (err, guest) {
-
-      if (err) return next(err);
-      res.send('Guest Status udpated.');
-  });
+        if (err) return next(err);
+        console.log(`##########: \n GUEST UPDATED WITH STATUS: ${status}`);
+        res.send({ "Message": "Guest Status udpated." });
+    });
 };
-
-
-
-

@@ -55,6 +55,15 @@ export class GuestService {
     )
   }
 
+  guestConfirmation(eventId, guestId, status): Observable<any> {
+    let url = `${this.baseUri}/guest/${guestId}/event/${eventId}/status/${status}`;
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.post(url, {headers: headers})
+      .pipe(
+        catchError(this.errorMgmt)
+      )
+  }
+
   // Error handling
   errorMgmt(error: HttpErrorResponse) {
     let errorMessage = '';

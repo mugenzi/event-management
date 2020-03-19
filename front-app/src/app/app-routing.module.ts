@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'organizer-register', component: RegisterComponent},
   { path: 'login', component: LoginComponent},
   { path: '', component:AppFrontComponent},
-  { path: 'guest-confirmation', component:GuestConfirmationComponent}
+  { path: 'guest-confirmation/eid/:eventId/gid/:guestId', component:GuestConfirmationComponent}
   // /event/:ei/guest/:gid
 ];
 
