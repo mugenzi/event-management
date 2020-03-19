@@ -9,7 +9,14 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 export class RegisterService {
 
   baseUri: string = 'http://localhost:4000/event/organizers';
-  headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+  token = localStorage.getItem('access_token')
+  myJWTHeaders = {
+    headers: {
+      "Content-Type":  "application/json",
+      "x-access-token": this.token
+    }
+  }
 
   constructor(private http: HttpClient) { }
 
@@ -30,7 +37,7 @@ export class RegisterService {
   // Delete Guest
   changePassword(email): Observable<any> {
     let url = `${this.baseUri}/changepassword/${email}`;
-    return this.http.post(url, { headers: this.headers }).pipe(
+    return this.http.post(url, this.myJWTHeaders).pipe(
       catchError(this.errorMgmt)
     )
   }

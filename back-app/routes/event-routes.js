@@ -7,50 +7,50 @@ let Event = require('../models/event');
 // Add Event
 eventRoute.route('/create').post((req, res, next) => {
     Event.create(req.body, (error, data) => {
-    if (error) {
-      return next(error)
-    } else {
-      res.json(data)
-    }
-  })
+        if (error) {
+            return next(error)
+        } else {
+            res.json(data)
+        }
+    })
 });
 
 // Get All Event
 eventRoute.route('/').get((req, res) => {
-  Event.find((error, data) => {
-    if (error) {
-      return next(error)
-    } else {
-      res.json(data)
-    }
-  })
+    Event.find((error, data) => {
+        if (error) {
+            return next(error)
+        } else {
+            res.json(data)
+        }
+    })
 })
 
 // Get single event
 eventRoute.route('/get/:id').get((req, res) => {
-  Event.findById(req.params.id, (error, data) => {
-    if (error) {
-      return next(error)
-    } else {
-      res.json(data)
-    }
-  })
+    Event.findById(req.params.id, (error, data) => {
+        if (error) {
+            return next(error)
+        } else {
+            res.json(data)
+        }
+    })
 })
 
 
 // Update event
 eventRoute.route('/update/:id').put((req, res, next) => {
-  Event.findByIdAndUpdate(req.params.id, {
-    $set: req.body
-  }, (error, data) => {
-    if (error) {
-      return next(error);
-      console.log(error)
-    } else {
-      res.json(data)
-      console.log('Data updated successfully')
-    }
-  })
+    Event.findByIdAndUpdate(req.params.id, {
+        $set: req.body
+    }, (error, data) => {
+        if (error) {
+            return next(error);
+            console.log(error)
+        } else {
+            res.json(data)
+            console.log('Data updated successfully')
+        }
+    })
 })
 
 // // Delete event
@@ -67,4 +67,3 @@ eventRoute.route('/update/:id').put((req, res, next) => {
 // })
 
 module.exports = eventRoute;
- 

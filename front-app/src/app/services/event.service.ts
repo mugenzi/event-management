@@ -9,15 +9,23 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 
 export class EventService {
 
-  baseUri:string = 'http://localhost:4000/events';
-  headers = new HttpHeaders().set('Content-Type', 'application/json');
+  baseUri:string = 'http://localhost:4000/events'; 
+  
+  token = localStorage.getItem('access_token')
+  myJWTHeaders = {
+    headers: {
+      "Content-Type":  "application/json",
+      "x-access-token": this.token
+    }
+  }
+  
 
   constructor(private http: HttpClient) { }
 
   // CREATE EVENT
   createEvent(data): Observable<any> {
     let url = `${this.baseUri}/create`;
-    return this.http.post(url, data)
+    return this.http.post(url, data, this.myJWTHeaders)
       .pipe(
         catchError(this.errorMgmt)
       )
@@ -25,13 +33,13 @@ export class EventService {
 
   // Get all events
   getEvents() {
-    return this.http.get(`${this.baseUri}`);
+    return this.http.get(`${this.baseUri}`, this.myJWTHeaders);
   }
 
   // Get event
   getEvent(id): Observable<any> {
     let url = `${this.baseUri}/read/${id}`;
-    return this.http.get(url, {headers: this.headers}).pipe(
+    return this.http.get(url, this.myJWTHeaders).pipe(
       map((res: Response) => {
         return res || {}
       }),
@@ -42,7 +50,7 @@ export class EventService {
   // UPDATE EVENT
   updateEvent(id, data): Observable<any> {
     let url = `${this.baseUri}/update/${id}`;
-    return this.http.put(url, data, { headers: this.headers }).pipe(
+    return this.http.put(url, data, this.myJWTHeaders).pipe(
       catchError(this.errorMgmt)
     )
   }
@@ -50,7 +58,7 @@ export class EventService {
   // Delete event
   deleteEvent(id): Observable<any> {
     let url = `${this.baseUri}/delete/${id}`;
-    return this.http.delete(url, { headers: this.headers }).pipe(
+    return this.http.delete(url, this.myJWTHeaders).pipe(
       catchError(this.errorMgmt)
     )
   }

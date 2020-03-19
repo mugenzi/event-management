@@ -10,14 +10,21 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 export class GuestService {
 
   baseUri:string = 'http://localhost:4000/guests';
-  headers = new HttpHeaders().set('Content-Type', 'application/json');
+ 
+  token = localStorage.getItem('access_token')
+  myJWTHeaders = {
+    headers: {
+      "Content-Type":  "application/json", 
+      "x-access-token": this.token
+    }
+  }
 
   constructor(private http: HttpClient) { }
 
   // CREATE A GUEST
   createGuest(data, id): Observable<any> {
     let url = `${this.baseUri}/create/${id}`;
-    return this.http.post(url, data,  {responseType: 'text'})
+    return this.http.post(url, data, this.myJWTHeaders)
       .pipe(
         catchError(this.errorMgmt)
       )
@@ -25,13 +32,20 @@ export class GuestService {
 
   // GET ALL GUESTS
   getGuests() {
-    return this.http.get(`${this.baseUri}`);
+    const myJWTHeaders = {
+      headers: {
+        "Content-Type":  "application/json",
+        "responseType": 'text',
+        "x-access-token": this.token
+      }
+    }
+    return this.http.get(`${this.baseUri}`, myJWTHeaders);
   }
 
   // Get GUEST
   getGuest(id): Observable<any> {
     let url = `${this.baseUri}/read/${id}`;
-    return this.http.get(url, {headers: this.headers}).pipe(
+    return this.http.get(url, this.myJWTHeaders).pipe(
       map((res: Response) => {
         return res || {}
       }),
@@ -42,7 +56,7 @@ export class GuestService {
   // Update event
   updateGuest(id, data): Observable<any> {
     let url = `${this.baseUri}/update/${id}`;
-    return this.http.put(url, data, { headers: this.headers }).pipe(
+    return this.http.put(url, data, this.myJWTHeaders).pipe(
       catchError(this.errorMgmt)
     )
   }
@@ -50,15 +64,15 @@ export class GuestService {
   // Delete event
   deleteGuest(id): Observable<any> {
     let url = `${this.baseUri}/delete/${id}`;
-    return this.http.delete(url, { headers: this.headers }).pipe(
+    return this.http.delete(url, this.myJWTHeaders).pipe(
       catchError(this.errorMgmt)
     )
   }
 
   guestConfirmation(eventId, guestId, status): Observable<any> {
     let url = `${this.baseUri}/guest/${guestId}/event/${eventId}/status/${status}`;
-    const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.post(url, {headers: headers})
+     
+    return this.http.post(url, this.myJWTHeaders)
       .pipe(
         catchError(this.errorMgmt)
       )

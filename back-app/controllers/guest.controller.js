@@ -38,7 +38,7 @@ exports.guest_create = function(req, res) {
         });
 
 
-        res.send('Guest Created successfully');
+        res.send({ 'Message': 'Guest Created successfully' });
     })
 };
 
@@ -63,14 +63,14 @@ exports.guest_details = function(req, res) {
 exports.guest_update = function(req, res) {
     Guest.findByIdAndUpdate(req.params.id, { $set: req.body }, function(err, guest) {
         if (err) return next(err);
-        res.send('Guest udpated.');
+        res.send({ 'Message': 'Guest udpated.' });
     });
 };
 
 exports.guest_delete = function(req, res) {
     Guest.findByIdAndRemove(req.params.id, function(err) {
         if (err) return next(err);
-        res.send('Deleted successfully!');
+        res.send({ 'Message': 'Deleted successfully!' });
     })
 };
 

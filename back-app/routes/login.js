@@ -7,21 +7,6 @@ const { accessTokenSecret } = require('../config.json');
 const User = require('../models/organizer');
 const router = Router();
 
-// router.post("/", json(), async(req, res) => {
-//     console.log('########NAHAGEZE');
-//     console.log(req.body.email);
-//     const user = await User.findOne({ "email": req.body.email });
-//     if (user) {
-//         const { password, ...userObject } = user.toObject();
-//         const accessToken = jwt.sign(userObject, accessTokenSecret, {
-//             expiresIn: 86400 // expires in 24 hours
-//         });
-//         res.send({ accessToken });
-//     } else {
-//         res.status(401).send({ message: "Invalid credentials." })
-//     }
-// });
-
 //MY LOGIN
 router.post('/login', json(), async function(req, res) {
     console.log('#######you are calling login service');

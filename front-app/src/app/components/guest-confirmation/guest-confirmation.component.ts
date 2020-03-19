@@ -28,7 +28,6 @@ export class GuestConfirmationComponent implements OnInit {
           }, (error) => {
             console.log(error);
           });
-       
     }
 
     guestDecline() {
