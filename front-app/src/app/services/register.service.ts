@@ -16,7 +16,7 @@ export class RegisterService {
   // Create One
   register(data): Observable<any> {
     let url = `${this.baseUri}`;
-    return this.http.get(url, data)
+    return this.http.post(url, data)
       .pipe(
         catchError(this.errorMgmt)
       )
