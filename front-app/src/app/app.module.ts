@@ -21,6 +21,7 @@ import { AuthenticationGuard } from './guards/authentication.guard';
 
 import { JwtModule } from '@auth0/angular-jwt';
 import { AppFrontComponent } from './components/app-front/app-front.component';
+import { GuestConfirmationComponent } from './components/guest-confirmation/guest-confirmation.component';
 export function tokenGetter() {
   return localStorage.getItem('access_token');
 }
@@ -35,7 +36,8 @@ export function tokenGetter() {
     GuestListComponent,
     LoginComponent,
     RegisterComponent,
-    AppFrontComponent
+    AppFrontComponent,
+    GuestConfirmationComponent
   ],
   imports: [
     BrowserModule,

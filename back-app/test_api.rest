@@ -43,7 +43,7 @@ Content-Type: application/json
    "lastname": "Test Guest",
    "email": "Test Guest",
    "phone": "Test Guest",
-   "status": "Test Guest" 
+   "status": "Test Guest"
 }
 
 
@@ -58,24 +58,6 @@ GET http://localhost:4000/guests HTTP/1.1
 
 #################################################
 
-PUT http://localhost:4000/events/update/5e70432ae91fec2f14f7f48a HTTP/1.1
+POST http://localhost:4000/guests/guest/5e71b256960f934a8c139f7e/event/5e7194c46d9d325268ce6de7 HTTP/1.1
 Content-Type: application/json
 
-{
-   "name": "Event Test",
-   "eventDate": "Event Test",
-   "eventType": "Event Test",
-   "eventStatus": "Event Test",
-   "eventVenue": {
-       "location": {
-           "lat": "123",
-           "long": "456"
-       },
-       "address": {
-         "street": "1000N 4th st",
-           "city": "Fairfield",
-           "state": "IA",
-           "zipcode":"52557"
-       }
-   }
-}

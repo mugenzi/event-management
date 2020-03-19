@@ -28,18 +28,21 @@
            <label for="inputFirstname">First Name</label>
            <input class="form-control" type="text" formControlName="firstname">
            <!-- error -->
-           <div class="invalid-feedback" *ngIf="submitted && myForm.firstname.errors?.required">
-             Name is required.
+           <div class="invalid-feedback d-block" *ngIf="submitted && myForm.firstname.errors?.required">
+             Firstname is required.
            </div>
          </div>
 
          <div class="form-group">
+
           <label for="inputLastname">Last Name</label>
           <input class="form-control" type="text" formControlName="lastname">
           <!-- error -->
-          <div class="invalid-feedback" *ngIf="submitted && myForm.lastname.errors?.required">
-            Name is required.
+          <div class="invalid-feedback d-block" *ngIf="submitted && myForm.lastname.errors?.required">
+            Lastname is required.
           </div>
+
+
         </div>
 
 
@@ -47,8 +50,11 @@
           <label for="inputEmail">Email</label>
           <input class="form-control" type="text" formControlName="email">
           <!-- error -->
-          <div class="invalid-feedback" *ngIf="submitted && myForm.email.errors?.required">
-            Name is required.
+          <div class="invalid-feedback d-block" *ngIf="submitted && myForm.email.errors?.required">
+            Enter your Email.
+          </div>
+          <div class="invalid-feedback d-block" *ngIf="submitted && myForm.email.errors?.pattern">
+            Enter valid Email.
           </div>
         </div>
 
@@ -56,8 +62,11 @@
           <label for="inputPhone">Phone Number</label>
           <input class="form-control" type="text" formControlName="phone">
           <!-- error -->
-          <div class="invalid-feedback" *ngIf="submitted && myForm.phone.errors?.required">
-            Name is required.
+          <div class="invalid-feedback d-block" *ngIf="submitted && myForm.phone.errors?.required">
+            Enter your Phone Number.
+          </div>
+          <div class="invalid-feedback d-block" *ngIf="submitted && myForm.phone.errors?.pattern">
+            Enter valid Phone Number.
           </div>
         </div>
 

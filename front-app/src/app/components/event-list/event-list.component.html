@@ -35,8 +35,8 @@
             </thead>
             <tbody>
                 <tr *ngFor="let event of Event; let i = index">
-                    <th scope="row">{{event.name}}</th>
-                    <td>{{event.name}}</td>
+                    <th scope="row">{{i+1}}</th>
+                    <td> {{event.name}}</td>
                     <td>{{event.eventDate}}</td>
                     <td>{{event.eventType}}</td>
                     <td>{{event.guests.length}}</td>

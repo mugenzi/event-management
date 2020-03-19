@@ -24,8 +24,8 @@
            <label for="inputName">Event Title</label>
            <input class="form-control" type="text" formControlName="name">
            <!-- error -->
-           <div class="invalid-feedback" *ngIf="submitted && myForm.name.errors?.required">
-             Name is required.
+           <div class="invalid-feedback d-block" *ngIf="submitted && myForm.name.errors?.required">
+             Event Title is required.
            </div>
          </div>
 
@@ -34,11 +34,11 @@
            <label for="inputeventDate3">Event Date</label>
            <input class="form-control" type="date" formControlName="eventDate">
            <!-- error -->
-           <div class="invalid-feedback" *ngIf="submitted && myForm.eventDate.errors?.required">
-             Enter your eventDate.
+           <div class="invalid-feedback d-block" *ngIf="submitted && myForm.eventDate.errors?.required">
+             Enter your Event Date.
            </div>
-           <div class="invalid-feedback" *ngIf="submitted && myForm.eventDate.errors?.pattern">
-             Enter valid eventDate.
+           <div class="invalid-feedback d-block" *ngIf="submitted && myForm.eventDate.errors?.pattern">
+             Enter valid Event Date.
            </div>
          </div>
 
@@ -51,7 +51,7 @@
              </option>
            </select>
            <!-- error -->
-           <div class="invalid-feedback" *ngIf="submitted && myForm.eventType.errors?.required">
+           <div class="invalid-feedback d-block" *ngIf="submitted && myForm.eventType.errors?.required">
              Choose eventType.
            </div>
          </div>
@@ -63,8 +63,8 @@
            <label for="inputLat">Latitude</label>
            <input class="form-control" type="text" formControlName="lat">
            <!-- error -->
-           <div class="invalid-feedback" *ngIf="submitted && myForm.lat.errors?.required">
-             Lat is required.
+           <div class="invalid-feedback d-block" *ngIf="submitted && myForm.lat.errors?.required">
+             Latitude is required.
            </div>
          </div>
 
@@ -73,8 +73,8 @@
            <label for="inputLong">Longitude</label>
            <input class="form-control" type="text" formControlName="long">
            <!-- error -->
-           <div class="invalid-feedback" *ngIf="submitted && myForm.long.errors?.required">
-             Lat is required.
+           <div class="invalid-feedback d-block" *ngIf="submitted && myForm.long.errors?.required">
+             Longitude is required.
            </div>
          </div>
         </div>
@@ -84,8 +84,8 @@
            <label for="inputStreet">Street</label>
            <input class="form-control" type="text" formControlName="street">
            <!-- error -->
-           <div class="invalid-feedback" *ngIf="submitted && myForm.street.errors?.required">
-             Lat is required.
+           <div class="invalid-feedback d-block" *ngIf="submitted && myForm.street.errors?.required">
+             Street is required.
            </div>
          </div>
 
@@ -93,7 +93,7 @@
            <label for="inputCity">City</label>
            <input class="form-control" type="text" formControlName="city">
            <!-- error -->
-           <div class="invalid-feedback" *ngIf="submitted && myForm.city.errors?.required">
+           <div class="invalid-feedback d-block" *ngIf="submitted && myForm.city.errors?.required">
              City is required.
            </div>
          </div>
@@ -103,8 +103,8 @@
            <label for="inputState">State</label>
            <input class="form-control" type="text" formControlName="state">
            <!-- error -->
-           <div class="invalid-feedback" *ngIf="submitted && myForm.state.errors?.required">
-             Lat is required.
+           <div class="invalid-feedback d-block" *ngIf="submitted && myForm.state.errors?.required">
+             State is required.
            </div>
          </div>
 
@@ -112,8 +112,8 @@
            <label for="inputZipcode">Zipcode</label>
            <input class="form-control" type="text" formControlName="zipcode">
            <!-- error -->
-           <div class="invalid-feedback" *ngIf="submitted && myForm.zipcode.errors?.required">
-             Lat is required.
+           <div class="invalid-feedback d-block" *ngIf="submitted && myForm.zipcode.errors?.required">
+             Zipcode is required.
            </div>
          </div>
         </div>
